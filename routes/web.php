@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::post('/signup', [
-	'uses' => 'UserController@postSignUp',
-	'as' => 'signup'
-]);
+	Route::view('/', 'welcome')->name('home');
+    Route::post('/signup', 'UserController@postSignUp')->name('signup');
+    Route::post('/signin', 'UserController@postSignIn')->name('signin');
+    
+    Route::middleware('guest')->group(function() {
+    	Route::get('/dashboard', 'GastoController@getDashboard')->name('dashboard');
+    	Route::post('/postgasto', 'GastoController@postGastoPost')->name('postgasto');
+    	Route::get('/delete-post/{gasto_id}', 'GastoController@postGastoDelete')->name('gasto.delete');
+    });
