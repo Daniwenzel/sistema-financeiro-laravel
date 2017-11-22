@@ -14,7 +14,11 @@
 	Route::view('/', 'welcome')->name('home');
     Route::post('/signup', 'UserController@postSignUp')->name('signup');
     Route::post('/signin', 'UserController@postSignIn')->name('signin');
-    
+    Route::get('/logout', 'UserController@getLogout')->name('logout');
+    Route::post('/edit', function(\Illuminate\Http\Request $request) {
+    	return response()->json(['mensagem' => $request['gastoId']]);
+    })->name('edit');
+
     Route::middleware('guest')->group(function() {
     	Route::get('/dashboard', 'GastoController@getDashboard')->name('dashboard');
     	Route::post('/postgasto', 'GastoController@postGastoPost')->name('postgasto');

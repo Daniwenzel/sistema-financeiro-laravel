@@ -19,3 +19,16 @@
 .error, .success {
 	text-align: center;
 }
+
+.navbar {
+	margin-bottom: 15px;
+}
+
+.new-gasto {
+    padding: 16px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.new-gasto header {
+    margin-bottom: 20px;
+}

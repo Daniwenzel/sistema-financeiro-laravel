@@ -11,7 +11,7 @@ class GastoController extends Controller
 
 	public function getDashboard()
 	{
-		$gastos = Gasto::all();
+		$gastos = Gasto::orderBy('created_at', 'desc')->get();
 		return view('dashboard', ['gastos' => $gastos]);
 	}
 
