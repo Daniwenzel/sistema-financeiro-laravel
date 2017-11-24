@@ -84,7 +84,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" id="modal-save">Salvar alterações</button>
+                    <button type="submit" class="btn btn-primary" id="modal-save">Salvar alterações</button>
                 </div>
             </div>
         </div>
@@ -92,6 +92,6 @@
 
     <script>
     	var token =  '{{ Session::token() }}';
-    	var url = '{{ route('edit') }}';
+    	var urlEdit = '{{ route('edit') }}';
     </script>
 @endsection

@@ -9,7 +9,7 @@ $(".editbtn").find("i").on("click", function(event) {
 	var descontoGasto = event.target.parentNode.parentNode.parentNode.childNodes[5].textContent;
 	var multaGasto = event.target.parentNode.parentNode.parentNode.childNodes[7].textContent;
 
-	gastoId = event.target.parentNode.parentNode.parentNode.dataSet['gastoid'];
+	gastoId = event.target.parentNode.parentNode.parentNode.dataset['gastoid'];
 
 	$("#descricao-modal").val(descricaoGasto);
 	$("#valor-modal").val(valorGasto);
@@ -21,8 +21,8 @@ $(".editbtn").find("i").on("click", function(event) {
 
 $("#modal-save").on("click", function() {
 	$.ajax({
-		method: 'POST',
-		url: url,
+		type: 'POST',
+		url: urlEdit,
 		data: 
 		{
 			descricao: $("#descricao-modal").val(),
@@ -34,6 +34,7 @@ $("#modal-save").on("click", function() {
 		}
 	})
 	.done(function(msg) {
-		console.log(msg['mensagem']);
+		//console.log(JSON.stringify(msg));
 	});
 });
+

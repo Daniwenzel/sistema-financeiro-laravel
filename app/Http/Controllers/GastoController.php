@@ -41,7 +41,21 @@ class GastoController extends Controller
 
 	function postGastoEdit()
 	{
+		$this->validate($request, [
+			'descricao' => 'required|max:200',
+			'valor' => 'required',
+			'desconto' => 'required',
+			'multa' => 'required'
+			]);
 
+		$gasto = Gasto::find($request['gastoid']);
+		$gasto->descricao = $request['descricao'];
+		$gasto->valor = $request['valor'];
+		$gasto->desconto = $request['desconto'];
+		$gasto->multa = $request['multa'];
+		$gasto->update();
+
+		return response()->json(['message' => 'Gasto editado com sucesso!'], 200);
 	}
 
 	function postGastoDelete($gasto_id)
